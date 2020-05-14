@@ -128,10 +128,15 @@ public class NoteSolverPlugin extends Plugin {
 				for (JMenuItem menuItem : mainMenuEntries(menuTypes.MAIN)) 
 					contextMenu.add(menuItem);
 				Point p = MainApplication.getMainFrame().getMousePosition();
-				contextMenu.setInvoker(MainApplication.getMainFrame().getComponentAt(p));
-				contextMenu.setLocation(p);
-				contextMenu.setEnabled(true);
-				contextMenu.setVisible(true);
+				if (p != null) {
+					Component c = MainApplication.getMainFrame().getComponentAt(p);
+					if (c != null) {
+						contextMenu.setInvoker(c);
+						contextMenu.setLocation(p);
+						contextMenu.setEnabled(true);
+						contextMenu.setVisible(true);
+					}
+				}
 			}
 		}
 		@Override
@@ -331,7 +336,7 @@ public class NoteSolverPlugin extends Plugin {
 		if (linkType == linkTypes.NOTE) {
 			thisNumber = ((Note)inputObject).getId();
 		} else if (linkType == linkTypes.CHANGESET) {
-			thisNumber = (Long)inputObject;
+			thisNumber = Integer.toUnsignedLong((Integer)inputObject);
 		}
 		if (thisNumber > 0L) {
 			returnValue = serverUrl + linkType.name().toLowerCase() + "/" + Long.toString(thisNumber);
