@@ -7,7 +7,7 @@ Plugin-Class: org.openstreetmap.josm.plugins.notesolver.NoteSolverPlug
  in
 Plugin-Description: Used for closing notes when uploading a changeset 
  and referencing them in each other's comments to keep references.
-Plugin-Date: 2020-05-10T23:07:54.659
+Plugin-Date: 2020-05-14T06:58:47.130
 Author: Kai Michael Poppe
 Plugin-Link: https://wiki.openstreetmap.org/wiki/User:Kmpoppe/Plugins#
  noteSolver
