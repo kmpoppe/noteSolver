@@ -45,6 +45,17 @@ public class NoteSolverPlugin extends Plugin {
 		// ...andFire... added so that the Plugin can be loaded at runtime and
 		// the event handlers get loaded anyway.
 		MainApplication.getLayerManager().addAndFireLayerChangeListener(layerChangeListener);
+		// Check if a Note is already selected when the plugin gets loaded.
+		if (
+			MainApplication.getLayerManager().getNoteLayer() != null
+			&&
+			MainApplication.getLayerManager().getNoteLayer().getNoteData() != null
+			&&
+			MainApplication.getLayerManager().getNoteLayer().getNoteData().getSelectedNote() != null
+		) {
+			selectedNote = MainApplication.getLayerManager().getNoteLayer().getNoteData().getSelectedNote();
+			updateMenu();
+		}
 		// Register Upload Hook
 		UploadAction.registerUploadHook(uploadHook, false);
 	}
@@ -130,9 +141,11 @@ public class NoteSolverPlugin extends Plugin {
 				Point p = MainApplication.getMainFrame().getMousePosition();
 				if (p != null) {
 					Component c = MainApplication.getMainFrame().getComponentAt(p);
+					JComponent jc = (JComponent)c;
 					if (c != null) {
 						contextMenu.setInvoker(c);
 						contextMenu.setLocation(p);
+						jc.setComponentPopupMenu(contextMenu);
 						contextMenu.setEnabled(true);
 						contextMenu.setVisible(true);
 					}
