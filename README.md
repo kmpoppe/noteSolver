@@ -9,7 +9,7 @@ Once the changes are uploaded, the Note that was referenced gets a comment showi
 While this plugin is not yet published to the JOSM repository, use this description of how to add the plugin to JOSM manually.
 ## How to install this plugin
 
-Download [notesolver.jar](https://github.com/kmpoppe/noteSolver/releases/download/0.3.1/notesolver.jar) and copy it to "plugins" inside the [user-data directory](https://josm.openstreetmap.de/wiki/Help/Preferences#JOSMpreferencedatacachedirectories).
+Download [notesolver.jar](https://github.com/kmpoppe/noteSolver/releases/latest/download/notesolver.jar) and copy it to "plugins" inside the [user-data directory](https://josm.openstreetmap.de/wiki/Help/Preferences#JOSMpreferencedatacachedirectories).
 
 Afterwards, restart JOSM,  go to settings, Plug-Ins and enable "notesolver". Now you have to restart JOSM again.
 
