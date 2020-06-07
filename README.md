@@ -6,8 +6,9 @@ The Changeset comment automatically gets an attachment to the comment showing th
 
 Once the changes are uploaded, the Note that was referenced gets a comment showing the URL of the Changeset and gets resolved.
 
-While this plugin is not yet published to the JOSM repository, use this description of how to add the plugin to JOSM manually.
-## How to install this plugin
+This plugin is now listed in the global JOSM plugin list.
+
+## How to install this plugin manually
 
 Download [notesolver.jar](https://github.com/kmpoppe/noteSolver/releases/latest/download/notesolver.jar) and copy it to "plugins" inside the [user-data directory](https://josm.openstreetmap.de/wiki/Help/Preferences#JOSMpreferencedatacachedirectories).
 
