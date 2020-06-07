@@ -87,8 +87,10 @@ public class NoteSolverPlugin extends Plugin {
 						String comment = MainApplication.getLayerManager().getEditDataSet().getChangeSetTags().get("comment");
 						for (Note note : solvedNotes) {
 							String noteLink = "Closes " + getUrl(note, linkTypes.NOTE);
-							comment = comment.replace("; " + noteLink, "");
-							comment = comment.replace(noteLink, "");
+							if (comment != null) {
+								comment = comment.replace("; " + noteLink, "");
+								comment = comment.replace(noteLink, "");
+							}
 						}
 						for (Note note : rememberedNotes) {
 							String noteLink = "Closes " + getUrl(note, linkTypes.NOTE);
