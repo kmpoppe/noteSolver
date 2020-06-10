@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <project name="notesolver" default="dist" basedir=".">
 	<property name="commit.message" value="Note Solver"/>
-    <property name="plugin.main.version" value="16538"/>
-    <property name="version.entry.commit.revision" value="0.3.2"/>
-    <property name="plugin.author" value="Kai Michael Poppe"/>
-    <property name="plugin.class" value="org.openstreetmap.josm.plugins.notesolver.NoteSolverPlugin"/>   
-    <property name="plugin.description" value="Used for closing notes when uploading a changeset and referencing them in each other's comments to keep references."/>
-    <property name="plugin.icon" value=""/>
-    <property name="plugin.link" value="https://wiki.openstreetmap.org/wiki/User:Kmpoppe/Plugins#noteSolver"/>
-    <property name="plugin.canloadatruntime" value="true"/>
+	<property name="plugin.main.version" value="16538"/>
+	<property name="version.entry.commit.revision" value="0.3.2"/>
+	<property name="plugin.author" value="Kai Michael Poppe"/>
+	<property name="plugin.class" value="org.openstreetmap.josm.plugins.notesolver.NoteSolverPlugin"/>   
+	<property name="plugin.description" value="Used for closing notes when uploading a changeset and referencing them in each other's comments to keep references."/>
+	<property name="plugin.icon" value=""/>
+	<property name="plugin.link" value="https://wiki.openstreetmap.org/wiki/User:Kmpoppe/Plugins#noteSolver"/>
+	<property name="plugin.canloadatruntime" value="true"/>
 	<import file="../build-common.xml"/>
 </project>
