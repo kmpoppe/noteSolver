@@ -34,7 +34,7 @@ public class NoteSolverPlugin extends Plugin {
 	private boolean autoUploadDecision = false;
 	NoteSolverPlugin me = this;
 	int maxMenuItemLen = 50;
-	String crLf = "    " + (char)13 + (char)10;
+	String crLf = " " + (char)13 + (char)10;
 
 	public NoteSolverPlugin(final PluginInformation info) {
 		super(info);
