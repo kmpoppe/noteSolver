@@ -9,5 +9,4 @@
     <property name="plugin.icon" value=""/>
     <property name="plugin.link" value="https://wiki.openstreetmap.org/wiki/User:Kmpoppe/Plugins#noteSolver"/>
     <property name="plugin.canloadatruntime" value="true"/>
-    <import file="../build-common.xml"/>
 </project>
