@@ -1,4 +1,7 @@
 # noteSolver - A JOSM Plugin
+[![Twitter](https://img.shields.io/badge/Twitter-@kmpoppe-1DA1F2.svg?style=for-the-badge&logo=twitter)](https://twitter.com/kmpoppe)
+[![Custom badge](https://img.shields.io/static/v1?label=TELEGRAM&message=%40kmpoppe&color=0088ff&logo=telegram&style=for-the-badge)](https://t.me/kmpoppe)
+![GitHub All Releases](https://img.shields.io/github/downloads/kmpoppe/noteSolver/total?style=for-the-badge)
 
 This plugin for JOSM allows resolving a Note directly after uploading some changes.
 
@@ -7,6 +10,10 @@ The Changeset comment automatically gets an attachment to the comment showing th
 Once the changes are uploaded, the Note that was referenced gets a comment showing the URL of the Changeset and gets resolved.
 
 This plugin is now listed in the global JOSM plugin list.
+
+## Contributing
+
+If you want to contribute to this plugin, please read [CONTRIBUTING.md](/CONTRIBUTING.md).
 
 ## How to install this plugin manually
 
