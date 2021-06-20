@@ -316,7 +316,7 @@ public class NoteSolverPlugin extends Plugin {
 		String menuItemText = 
 			"* " + Long.toString(n.getId()) + " " +
 			"[" + n.getFirstComment().getUser().getName().toString() + 
-			" @ " + DateFormat.getDateInstance().format(n.getCreatedAt()) + 
+			// " @ " + DateFormat.getDateInstance().format(n.getCreatedAt()) + 
 			": " + firstComment + 
 			"]";
 		return menuItemText;
