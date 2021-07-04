@@ -27,6 +27,17 @@ import java.awt.event.*;
 import java.awt.*;
 import javax.swing.*;
 
+import org.w3c.dom.Document;
+import org.w3c.dom.Element;
+import org.w3c.dom.NodeList;
+
+import javax.xml.XMLConstants;
+import javax.xml.parsers.DocumentBuilder;
+import javax.xml.parsers.DocumentBuilderFactory;
+import java.io.InputStream;
+import java.net.URL;
+import java.net.URLConnection;
+
 public class NoteSolverPlugin extends Plugin {
 	static JMenu noteSolverMenu;
 	public NoteList rememberedNotes = new NoteList();
@@ -210,15 +221,18 @@ public class NoteSolverPlugin extends Plugin {
 				if (lastChangeSet != thisChangeSet) {
 					lastChangeSet = thisChangeSet;
 					for (Note note : rememberedNotes) {
+						String cOnlineStatus = getOnlineNoteStatus(note.getId());
 						NoteData noteData = new NoteData(java.util.Collections.singleton(note));
-						if (note.getState() != State.CLOSED) {
+						if (note.getState() == State.OPEN && cOnlineStatus.toLowerCase().trim().equals("open")) {
 							try {
-								noteData.closeNote(note, "Resolved with changeset " + getUrl(thisChangeSet, linkTypes.CHANGESET));
+								noteData.closeNote(note, "Resolved with changeset " + getUrl(thisChangeSet, linkTypes.CHANGESET) + " by noteSolver_plugin/" + myPluginInformation.version);
 								UploadNotesTask uploadNotesTask = new UploadNotesTask();
 								uploadNotesTask.uploadNotes(noteData, pm);
 							} catch (Exception e) {
-								JOptionPane.showMessageDialog(null, "Note exception: " + e.getMessage());
+								JOptionPane.showMessageDialog(null, "Upload Note exception: " + e.getMessage());
 							}
+						} else {
+							JOptionPane.showMessageDialog(null, "Note " + Long.toString(note.getId()) + " was already closed outside of JOSM");
 						}
 						solvedNotes.add(note);
 					}
@@ -369,6 +383,37 @@ public class NoteSolverPlugin extends Plugin {
 		}
 		return returnValue;
 	}
+
+    private String getOnlineNoteStatus(long noteId) {
+		DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
+		String result = "";
+		String customServerUrl = Config.getPref().get("osm-server.url");
+		String apiUrl = 
+			(customServerUrl != null && customServerUrl != "" ? 
+			customServerUrl.replace(".org/api", ".org") : 
+			"https://www.openstreetmap.org")
+			+ "/api/0.6/notes/" + Long.toString(noteId);
+
+        try {
+            URLConnection conn = new URL(apiUrl).openConnection();
+            try (InputStream is = conn.getInputStream()) {
+                dbf.setFeature(XMLConstants.FEATURE_SECURE_PROCESSING, true);
+                DocumentBuilder dBuilder = dbf.newDocumentBuilder();
+                Document doc = dBuilder.parse(is);
+                Element element = doc.getDocumentElement();
+
+                NodeList nodeList = element.getElementsByTagName("status");
+                if (nodeList.getLength() > 0) {
+					result = nodeList.item(0).getTextContent();
+                }
+            }
+        } catch (Exception e) {
+            result = "failure";
+        }
+
+        return result;
+    }
+
 	private enum linkTypes {
 		NOTE, CHANGESET
 	};
