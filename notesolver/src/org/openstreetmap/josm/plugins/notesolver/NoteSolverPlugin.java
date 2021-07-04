@@ -6,9 +6,11 @@ import java.util.List;
 
 import org.openstreetmap.josm.actions.*;
 import org.openstreetmap.josm.actions.upload.*;
+import org.openstreetmap.josm.actions.downloadtasks.*;
 
 import org.openstreetmap.josm.data.*;
 import org.openstreetmap.josm.data.notes.*;
+import org.openstreetmap.josm.data.notes.Note.State;
 import org.openstreetmap.josm.data.osm.*;
 import org.openstreetmap.josm.data.osm.NoteData.*;
 import org.openstreetmap.josm.data.osm.event.*;
@@ -35,9 +37,11 @@ public class NoteSolverPlugin extends Plugin {
 	NoteSolverPlugin me = this;
 	int maxMenuItemLen = 50;
 	String crLf = "" + (char)13 + (char)10;
+	private PluginInformation myPluginInformation;
 
 	public NoteSolverPlugin(final PluginInformation info) {
 		super(info);
+		myPluginInformation = info;
 		// Create Menu
 		createMenu();
 		updateMenu();
@@ -96,6 +100,7 @@ public class NoteSolverPlugin extends Plugin {
 							String noteLink = "Closes " + getUrl(note, linkTypes.NOTE);
 							comment = (comment != null ? (comment.contains(noteLink) ? comment : comment + "; " + noteLink) : noteLink);
 						}
+						MainApplication.getLayerManager().getEditDataSet().addChangeSetTag("created_by", "noteSolver_plugin/" + myPluginInformation.version);
 						MainApplication.getLayerManager().getEditDataSet().addChangeSetTag("comment", comment);
 					}
 					returnValue = true;
@@ -199,16 +204,22 @@ public class NoteSolverPlugin extends Plugin {
 		@Override
 		public void otherDatasetChange(AbstractDatasetChangedEvent event)
 		{
+			ProgressMonitor pm = null;
 			if (event.getType() == AbstractDatasetChangedEvent.DatasetEventType.CHANGESET_ID_CHANGED && autoUploadDecision) {
 				int thisChangeSet = event.getPrimitives().iterator().next().getChangesetId();
 				if (lastChangeSet != thisChangeSet) {
 					lastChangeSet = thisChangeSet;
 					for (Note note : rememberedNotes) {
 						NoteData noteData = new NoteData(java.util.Collections.singleton(note));
-						noteData.closeNote(note, "Resolved with changeset " + getUrl(thisChangeSet, linkTypes.CHANGESET));
-						UploadNotesTask uploadNotesTask = new UploadNotesTask();
-						ProgressMonitor pm = null;
-						uploadNotesTask.uploadNotes(noteData, pm);
+						if (note.getState() != State.CLOSED) {
+							try {
+								noteData.closeNote(note, "Resolved with changeset " + getUrl(thisChangeSet, linkTypes.CHANGESET));
+								UploadNotesTask uploadNotesTask = new UploadNotesTask();
+								uploadNotesTask.uploadNotes(noteData, pm);
+							} catch (Exception e) {
+								JOptionPane.showMessageDialog(null, "Note exception: " + e.getMessage());
+							}
+						}
 						solvedNotes.add(note);
 					}
 					rememberedNotes = new NoteList();
