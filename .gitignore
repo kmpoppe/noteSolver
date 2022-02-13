@@ -3,3 +3,7 @@ notesolver/build/GPL-v2.0.txt
 notesolver/build/GPL-v3.0.txt
 notesolver/build/README
 notesolver/src/.vscode
+
+.idea/
+notesolver/.gradle/
+notesolver/build/
