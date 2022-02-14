@@ -1,6 +1,0 @@
-{
-    "java.project.referencedLibraries": [
-        "lib/**/*.jar",
-        "d:\\_dev\\osm\\josm\\josm\\core\\dist\\josm-custom.jar"
-    ]
-}

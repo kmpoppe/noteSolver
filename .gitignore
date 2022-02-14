@@ -6,4 +6,5 @@ notesolver/src/.vscode
 
 .idea/
 notesolver/.gradle/
+notesolver/bin/
 notesolver/build/
