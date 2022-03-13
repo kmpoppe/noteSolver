@@ -23,6 +23,8 @@ import org.openstreetmap.josm.gui.progress.ProgressMonitor;
 import org.openstreetmap.josm.plugins.*;
 import org.openstreetmap.josm.spi.preferences.Config;
 
+import org.openstreetmap.josm.tools.I18n;
+
 import java.awt.event.*;
 import java.awt.*;
 import javax.swing.*;
@@ -89,7 +91,7 @@ public class NoteSolverPlugin extends Plugin {
 
 				int outVal = JOptionPane.showConfirmDialog(
 					null,
-					"Automatically Resolve Note" + (rememberedNotes.size() > 1 ? "s" : "") + crLf + noteList + crLf + "?", 
+					I18n.trn("Automatically Resolve Note\n{0}?", "Automatically Resolve Notes\n{0}?", rememberedNotes.size(), noteList),
 					null, 
 					JOptionPane.YES_NO_CANCEL_OPTION, 
 					JOptionPane.QUESTION_MESSAGE
@@ -101,14 +103,14 @@ public class NoteSolverPlugin extends Plugin {
 					if (autoUploadDecision) {
 						String comment = MainApplication.getLayerManager().getEditDataSet().getChangeSetTags().get("comment");
 						for (Note note : solvedNotes) {
-							String noteLink = "Closes " + getUrl(note, linkTypes.NOTE);
+							String noteLink = I18n.tr("Closes {0}", getUrl(note, linkTypes.NOTE));
 							if (comment != null) {
 								comment = comment.replace("; " + noteLink, "");
 								comment = comment.replace(noteLink, "");
 							}
 						}
 						for (Note note : rememberedNotes) {
-							String noteLink = "Closes " + getUrl(note, linkTypes.NOTE);
+							String noteLink = I18n.tr("Closes {0}", getUrl(note, linkTypes.NOTE));
 							comment = (comment != null ? (comment.contains(noteLink) ? comment : comment + "; " + noteLink) : noteLink);
 						}
 						MainApplication.getLayerManager().getEditDataSet().addChangeSetTag("created_by", "noteSolver_plugin/" + myPluginInformation.version);
@@ -126,7 +128,7 @@ public class NoteSolverPlugin extends Plugin {
 		@Override
 		public void actionPerformed(ActionEvent event) {
 			if (selectedNote == null) {
-				JOptionPane.showMessageDialog(null, "No Note selected.");
+				JOptionPane.showMessageDialog(null, I18n.tr("No Note selected."));
 			} else {
 				if (rememberedNotes != null && rememberedNotes.containsNote(selectedNote))
 					rememberedNotes.remove(selectedNote);
@@ -139,7 +141,7 @@ public class NoteSolverPlugin extends Plugin {
 		@Override
 		public void actionPerformed(ActionEvent event) {
 			if (selectedNote == null) {
-				JOptionPane.showMessageDialog(null, "No Note selected.");
+				JOptionPane.showMessageDialog(null, I18n.tr("No Note selected."));
 			} else {
 				if (rememberedNotes != null && !rememberedNotes.containsNote(selectedNote))
 					rememberedNotes.add(selectedNote);
@@ -225,14 +227,14 @@ public class NoteSolverPlugin extends Plugin {
 						NoteData noteData = new NoteData(java.util.Collections.singleton(note));
 						if (note.getState() == State.OPEN && cOnlineStatus.toLowerCase().trim().equals("open")) {
 							try {
-								noteData.closeNote(note, "Resolved with changeset " + getUrl(thisChangeSet, linkTypes.CHANGESET) + " by noteSolver_plugin/" + myPluginInformation.version);
+								noteData.closeNote(note, I18n.tr("Resolved with changeset {0} by noteSolver_plugin/{1}", getUrl(thisChangeSet, linkTypes.CHANGESET), myPluginInformation.version));
 								UploadNotesTask uploadNotesTask = new UploadNotesTask();
 								uploadNotesTask.uploadNotes(noteData, pm);
 							} catch (Exception e) {
-								JOptionPane.showMessageDialog(null, "Upload Note exception: " + e.getMessage());
+								JOptionPane.showMessageDialog(null, I18n.tr("Upload Note exception:\n{0}", e.getMessage()));
 							}
 						} else {
-							JOptionPane.showMessageDialog(null, "Note " + Long.toString(note.getId()) + " was already closed outside of JOSM");
+							JOptionPane.showMessageDialog(null, I18n.tr("Note {0} was already closed outside of JOSM", Long.toString(note.getId())));
 						}
 						solvedNotes.add(note);
 					}
@@ -292,7 +294,7 @@ public class NoteSolverPlugin extends Plugin {
 		}
 		noteSolverMenu.addSeparator();
 		if (rememberedNotes != null && rememberedNotes.size() > 0) {
-			noteSolverMenu.add(new JMenuItem("List of selected Notes"));
+			noteSolverMenu.add(new JMenuItem(I18n.tr("List of selected Notes")));
 			noteSolverMenu.addSeparator();
 			for (JMenuItem j : mainMenuEntries(menuTypes.NOTELIST))
 				noteSolverMenu.add(j);
@@ -305,13 +307,13 @@ public class NoteSolverPlugin extends Plugin {
 			boolean bEnaPre = selectedNote != null && rememberedNotes != null;
 			boolean bEnaLst = (bEnaPre && rememberedNotes.contains(selectedNote));
 			boolean bEnaCls = (bEnaPre && selectedNote.getState() == Note.State.CLOSED);
-			JMenuItem addAction = new JMenuItem("Remember Note");
-			addAction.setToolTipText("Add the selected Note to the list of Notes that should be automatically closed when uploading a changeset");
+			JMenuItem addAction = new JMenuItem(I18n.tr("Remember Note"));
+			addAction.setToolTipText(I18n.tr("Add the selected Note to the list of Notes that should be automatically closed when uploading a changeset"));
 			addAction.addActionListener(rememberNoteAction);
 			addAction.setEnabled(bEnaPre && !bEnaLst && !bEnaCls);
 			returnList.add(addAction);
-			JMenuItem removeAction = new JMenuItem("Forget Note");
-			removeAction.setToolTipText("Remove the selected Note from the list of Notes that should be automatically closed when uploading a changeset");
+			JMenuItem removeAction = new JMenuItem(I18n.tr("Forget Note"));
+			removeAction.setToolTipText(I18n.tr("Remove the selected Note from the list of Notes that should be automatically closed when uploading a changeset"));
 			removeAction.addActionListener(forgetNoteAction);
 			removeAction.setEnabled(bEnaPre && bEnaLst);
 			returnList.add(removeAction);
