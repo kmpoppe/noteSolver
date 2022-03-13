@@ -4,7 +4,7 @@ plugins {
 
 josm {
   pluginName = "notesolver"
-  josmCompileVersion = "18360"
+  josmCompileVersion = "18387"
   manifest {
     canLoadAtRuntime = true
     description = "Used for closing notes when uploading a changeset and referencing them in each other's comments to keep references."
