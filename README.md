@@ -16,6 +16,10 @@ This plugin is now listed in the global JOSM plugin list.
 
 If you want to contribute to this plugin, please read [CONTRIBUTING.md](/CONTRIBUTING.md).
 
+## Translation
+
+Translation of the plugin is done using [POEditor](https://poeditor.com/join/project/RggSp7leZr), so if you're feeling like contributing a translation for the very limited amount of strings (currently only 12), you're very much welcome to add another translated language. Thank you!
+
 ## How to install this plugin manually
 
 Download [notesolver.jar](https://github.com/kmpoppe/noteSolver/releases/latest/download/notesolver.jar) and copy it to "plugins" inside the [user-data directory](https://josm.openstreetmap.de/wiki/Help/Preferences#JOSMpreferencedatacachedirectories).
