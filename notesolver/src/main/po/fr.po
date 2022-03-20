@@ -1,0 +1,69 @@
+msgid ""
+msgstr ""
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: POEditor.com\n"
+"Project-Id-Version: noteSolver JOSM Plugin\n"
+"Language: fr\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: src\main\java\org\openstreetmap\josm\plugins\notesolver\NoteSolverPlugin.java:311
+msgid "Add the selected Note to the list of Notes that should be automatically closed when uploading a changeset"
+msgstr "Ajoute la note sélectionnée à la liste des notes à résoudre automatiquement lors de l'envoi d'un groupe de modifications"
+
+#: src\main\java\org\openstreetmap\josm\plugins\notesolver\NoteSolverPlugin.java:94
+msgid "Automatically Resolve Note\n"
+"{0}?"
+msgid_plural "Automatically Resolve Notes\n"
+"{0}?"
+msgstr[0] "Résoudre automatiquement la note\n"
+"{0}?"
+msgstr[1] "Résoudre automatiquement les notes\n"
+"{0}?"
+
+#: src\main\java\org\openstreetmap\josm\plugins\notesolver\NoteSolverPlugin.java:106
+#: src\main\java\org\openstreetmap\josm\plugins\notesolver\NoteSolverPlugin.java:113
+msgid "Closes {0}"
+msgstr "Résout {0}"
+
+#: src\main\java\org\openstreetmap\josm\plugins\notesolver\NoteSolverPlugin.java:315
+msgid "Forget Note"
+msgstr "Oublier note"
+
+#: src\main\java\org\openstreetmap\josm\plugins\notesolver\NoteSolverPlugin.java:297
+msgid "List of selected Notes"
+msgstr "Liste des notes mémorisées"
+
+#: src\main\java\org\openstreetmap\josm\plugins\notesolver\NoteSolverPlugin.java:131
+#: src\main\java\org\openstreetmap\josm\plugins\notesolver\NoteSolverPlugin.java:144
+msgid "No Note selected."
+msgstr "Aucune note sélectionnée."
+
+#: src\main\java\org\openstreetmap\josm\plugins\notesolver\NoteSolverPlugin.java:237
+msgid "Note {0} was already closed outside of JOSM"
+msgstr "La note {0} a déjà été fermée en dehors de JOSM"
+
+#: src\main\java\org\openstreetmap\josm\plugins\notesolver\NoteSolverPlugin.java:310
+msgid "Remember Note"
+msgstr "Mémoriser la note"
+
+#: src\main\java\org\openstreetmap\josm\plugins\notesolver\NoteSolverPlugin.java:316
+msgid "Remove the selected Note from the list of Notes that should be automatically closed when uploading a changeset"
+msgstr "Supprime la note sélectionnée de la liste des notes à résoudre automatiquement lors de l'envoi d'un groupe de modifications"
+
+#: src\main\java\org\openstreetmap\josm\plugins\notesolver\NoteSolverPlugin.java:230
+msgid "Resolved with changeset {0} by noteSolver_plugin/{1}"
+msgstr "Résolu avec groupe de modification {0} par noteSolver_plugin/{1}"
+
+#: src\main\java\org\openstreetmap\josm\plugins\notesolver\NoteSolverPlugin.java:234
+msgid "Upload Note exception:\n"
+"{0}"
+msgstr "Erreur lors de l'envoi de la note vers le serveur:\n"
+"{0}"
+
+#. Plugin description for root project 'notesolver'.name
+#: 
+msgid "Used for closing notes when uploading a changeset and referencing them in each other's comments to keep references."
+msgstr "Utilisé pour fermer les notes qui sont résolues avec un groupe de modifications et crée simultanément une référence entre les deux dans les commentaires."
+
