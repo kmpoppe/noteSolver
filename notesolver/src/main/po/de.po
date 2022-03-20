@@ -38,7 +38,7 @@ msgstr "Liste gemerkter Hinweise"
 #: src\main\java\org\openstreetmap\josm\plugins\notesolver\NoteSolverPlugin.java:131
 #: src\main\java\org\openstreetmap\josm\plugins\notesolver\NoteSolverPlugin.java:144
 msgid "No Note selected."
-msgstr "Keine Hinweis ausgewählt."
+msgstr "Kein Hinweis ausgewählt."
 
 #: src\main\java\org\openstreetmap\josm\plugins\notesolver\NoteSolverPlugin.java:237
 msgid "Note {0} was already closed outside of JOSM"
