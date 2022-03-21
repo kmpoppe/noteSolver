@@ -5,65 +5,65 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: POEditor.com\n"
 "Project-Id-Version: noteSolver JOSM Plugin\n"
-"Language: de\n"
+"Language: pt\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: src\main\java\org\openstreetmap\josm\plugins\notesolver\NoteSolverPlugin.java:311
 msgid "Add the selected Note to the list of Notes that should be automatically closed when uploading a changeset"
-msgstr "Fügt den ausgewählten Hinweis der Liste automatisch beim Upload eines Changesets zu schließender Hinweise hinzu"
+msgstr "Adiciona a nota selecionada à lista de notas a serem fechadas automaticamente no momento do envio de um conjunto de alterações"
 
 #: src\main\java\org\openstreetmap\josm\plugins\notesolver\NoteSolverPlugin.java:94
 msgid "Automatically Resolve Note\n"
 "{0}?"
 msgid_plural "Automatically Resolve Notes\n"
 "{0}?"
-msgstr[0] "Hinweis automatisch schließen\n"
+msgstr[0] "Resolver nota automaticamente\n"
 "{0}?"
-msgstr[1] "Hinweise automatisch schließen\n"
+msgstr[1] "Resolver notas automaticamente\n"
 "{0}?"
 
 #: src\main\java\org\openstreetmap\josm\plugins\notesolver\NoteSolverPlugin.java:106
 #: src\main\java\org\openstreetmap\josm\plugins\notesolver\NoteSolverPlugin.java:113
 msgid "Closes {0}"
-msgstr "Erledigt {0}"
+msgstr "Resolve {0}"
 
 #: src\main\java\org\openstreetmap\josm\plugins\notesolver\NoteSolverPlugin.java:315
 msgid "Forget Note"
-msgstr "Hinweis vergessen"
+msgstr "Esquecer nota"
 
 #: src\main\java\org\openstreetmap\josm\plugins\notesolver\NoteSolverPlugin.java:297
 msgid "List of selected Notes"
-msgstr "Liste gemerkter Hinweise"
+msgstr "Lista de notas selecionadas"
 
 #: src\main\java\org\openstreetmap\josm\plugins\notesolver\NoteSolverPlugin.java:131
 #: src\main\java\org\openstreetmap\josm\plugins\notesolver\NoteSolverPlugin.java:144
 msgid "No Note selected."
-msgstr "Kein Hinweis ausgewählt."
+msgstr "Nenhuma nota selecionada."
 
 #: src\main\java\org\openstreetmap\josm\plugins\notesolver\NoteSolverPlugin.java:237
 msgid "Note {0} was already closed outside of JOSM"
-msgstr "Der Hinweis {0} wurde bereits außerhalb von JOSM geschlossen"
+msgstr "Nota {0} já foi fechada fora do JOSM"
 
 #: src\main\java\org\openstreetmap\josm\plugins\notesolver\NoteSolverPlugin.java:310
 msgid "Remember Note"
-msgstr "Hinweis merken"
+msgstr "Memorizar nota"
 
 #: src\main\java\org\openstreetmap\josm\plugins\notesolver\NoteSolverPlugin.java:316
 msgid "Remove the selected Note from the list of Notes that should be automatically closed when uploading a changeset"
-msgstr "Entfernt den ausgewählten Hinweis von der Liste automatisch beim Upload eines Changesets zu schließender Hinweise"
+msgstr "Remove a nota selecionada da lista de notas a serem fechadas automaticamente ao envio do conjunto de alterações"
 
 #: src\main\java\org\openstreetmap\josm\plugins\notesolver\NoteSolverPlugin.java:230
 msgid "Resolved with changeset {0} by noteSolver_plugin/{1}"
-msgstr "Erledigt mit Changeset {0} von noteSolver_plugin/{1}"
+msgstr "Resolvido com conjunto de alterações {0} por noteSolver_plugin/{1}"
 
 #: src\main\java\org\openstreetmap\josm\plugins\notesolver\NoteSolverPlugin.java:234
 msgid "Upload Note exception:\n"
 "{0}"
-msgstr "Fehler beim Upload des Hinweises:\n"
+msgstr "Erro ao envio da nota:\n"
 "{0}"
 
 #. Plugin description for root project 'notesolver'.name
 #: 
 msgid "Used for closing notes when uploading a changeset and referencing them in each other's comments to keep references."
-msgstr "Genutzt um Hinweise zu schließen, die mit einem Upload erledigt werden und gleichzeitig eine Referenz zwischen beiden in den Kommentaren zu erhalten."
+msgstr "Utilizado para fechar notas que são resolvidas com um conjunto de alterações e para simultaneamente criar uma referência entre as duas nos comentários."
 
