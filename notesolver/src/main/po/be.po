@@ -1,0 +1,71 @@
+msgid ""
+msgstr ""
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: POEditor.com\n"
+"Project-Id-Version: noteSolver JOSM Plugin\n"
+"Language: be\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+
+#: src\main\java\org\openstreetmap\josm\plugins\notesolver\NoteSolverPlugin.java:311
+msgid "Add the selected Note to the list of Notes that should be automatically closed when uploading a changeset"
+msgstr "Дадаць абраную нататку ў пералік нататак, якія будуць аўтаматычна закрыты пры адпраўцы пакета правак"
+
+#: src\main\java\org\openstreetmap\josm\plugins\notesolver\NoteSolverPlugin.java:94
+msgid "Automatically Resolve Note\n"
+"{0}?"
+msgid_plural "Automatically Resolve Notes\n"
+"{0}?"
+msgstr[0] "Аўтаматычна вырашыць нататку\n"
+"{0}?"
+msgstr[1] "Аўтаматычна вырашыць нататкі\n"
+"{0}?"
+msgstr[2] "Аўтаматычна вырашыць нататкі\n"
+"{0}?"
+
+#: src\main\java\org\openstreetmap\josm\plugins\notesolver\NoteSolverPlugin.java:106
+#: src\main\java\org\openstreetmap\josm\plugins\notesolver\NoteSolverPlugin.java:113
+msgid "Closes {0}"
+msgstr "Закрывае {0}"
+
+#: src\main\java\org\openstreetmap\josm\plugins\notesolver\NoteSolverPlugin.java:315
+msgid "Forget Note"
+msgstr "Забыцца нататку"
+
+#: src\main\java\org\openstreetmap\josm\plugins\notesolver\NoteSolverPlugin.java:297
+msgid "List of selected Notes"
+msgstr "Пералік абраных нататак"
+
+#: src\main\java\org\openstreetmap\josm\plugins\notesolver\NoteSolverPlugin.java:131
+#: src\main\java\org\openstreetmap\josm\plugins\notesolver\NoteSolverPlugin.java:144
+msgid "No Note selected."
+msgstr "Няма абраных нататак."
+
+#: src\main\java\org\openstreetmap\josm\plugins\notesolver\NoteSolverPlugin.java:237
+msgid "Note {0} was already closed outside of JOSM"
+msgstr "Нататка {0} ужо была закрыта за межамі JOSM"
+
+#: src\main\java\org\openstreetmap\josm\plugins\notesolver\NoteSolverPlugin.java:310
+msgid "Remember Note"
+msgstr "Запомніць нататку"
+
+#: src\main\java\org\openstreetmap\josm\plugins\notesolver\NoteSolverPlugin.java:316
+msgid "Remove the selected Note from the list of Notes that should be automatically closed when uploading a changeset"
+msgstr "Выдаліць абраную нататку з пераліку нататак, якія будуць аўтаматычна закрыты пры адпраўцы пакета правак"
+
+#: src\main\java\org\openstreetmap\josm\plugins\notesolver\NoteSolverPlugin.java:230
+msgid "Resolved with changeset {0} by noteSolver_plugin/{1}"
+msgstr "Вырашана ў пакеце правак {0} з noteSolver_plugin/{1}"
+
+#: src\main\java\org\openstreetmap\josm\plugins\notesolver\NoteSolverPlugin.java:234
+msgid "Upload Note exception:\n"
+"{0}"
+msgstr "Выключэнне пры адпраўцы нататцы:\n"
+"{0}"
+
+#. Plugin description for root project 'notesolver'.name
+#: 
+msgid "Used for closing notes when uploading a changeset and referencing them in each other's comments to keep references."
+msgstr "Выкарыстоўваецца для закрыцця нататак пры адпраўцы пакета правак і прастаўлення спасылак на іх у каментарах адзін аднаго для захавання спасылак."
+
