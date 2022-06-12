@@ -48,7 +48,6 @@ public class NoteSolverPlugin extends Plugin {
 	private int lastChangeSet;
 	private boolean autoUploadDecision = false;
 	NoteSolverPlugin me = this;
-	int maxMenuItemLen = 50;
 	String crLf = "" + (char)13 + (char)10;
 	private PluginInformation myPluginInformation;
 
@@ -87,7 +86,7 @@ public class NoteSolverPlugin extends Plugin {
 					if (rememberedNotes.containsNote(note)) rememberedNotes.remove(note);
 
 				for (Note note : rememberedNotes)
-					noteList = noteList + crLf + noteShortText(note);
+					noteList = noteList + crLf + NoteText.noteShortText(note);
 
 				int outVal = JOptionPane.showConfirmDialog(
 					null,
@@ -320,7 +319,7 @@ public class NoteSolverPlugin extends Plugin {
 		} else if (menuType == menuTypes.NOTELIST) {
 			if (rememberedNotes != null) {
 				for(Note note : rememberedNotes) {
-					JMenuItem jMenuItem = new JMenuItem(noteShortText(note));
+					JMenuItem jMenuItem = new JMenuItem(NoteText.noteShortText(note));
 					jMenuItem.setToolTipText(note.getFirstComment().toString());
 					jMenuItem.addActionListener(new ActionListener() {
 						@Override
@@ -335,18 +334,6 @@ public class NoteSolverPlugin extends Plugin {
 			}
 		}
 		return returnList;
-	}
-
-	private String noteShortText(Note n) {
-		String firstComment = n.getFirstComment().toString();
-		if (firstComment.length() > maxMenuItemLen) firstComment = firstComment.substring(0, maxMenuItemLen) + "...";
-		String menuItemText = 
-			"* " + Long.toString(n.getId()) + " " +
-			"[" + n.getFirstComment().getUser().getName().toString() + 
-			// " @ " + DateFormat.getDateInstance().format(n.getCreatedAt()) + 
-			": " + firstComment + 
-			"]";
-		return menuItemText;
 	}
 
 	@Override
