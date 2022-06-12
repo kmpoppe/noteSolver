@@ -382,30 +382,30 @@ public class NoteSolverPlugin extends Plugin {
 		return returnValue;
 	}
 
-    private String getOnlineNoteStatus(long noteId) {
+	private String getOnlineNoteStatus(long noteId) {
 		DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
 		String result = "";
 		String apiUrl = getServerUrl() + "api/0.6/notes/" + Long.toString(noteId);
 
-        try {
-            URLConnection conn = new URL(apiUrl).openConnection();
-            try (InputStream is = conn.getInputStream()) {
-                dbf.setFeature(XMLConstants.FEATURE_SECURE_PROCESSING, true);
-                DocumentBuilder dBuilder = dbf.newDocumentBuilder();
-                Document doc = dBuilder.parse(is);
-                Element element = doc.getDocumentElement();
+		try {
+			URLConnection conn = new URL(apiUrl).openConnection();
+			try (InputStream is = conn.getInputStream()) {
+				dbf.setFeature(XMLConstants.FEATURE_SECURE_PROCESSING, true);
+				DocumentBuilder dBuilder = dbf.newDocumentBuilder();
+				Document doc = dBuilder.parse(is);
+				Element element = doc.getDocumentElement();
 
-                NodeList nodeList = element.getElementsByTagName("status");
-                if (nodeList.getLength() > 0) {
+				NodeList nodeList = element.getElementsByTagName("status");
+				if (nodeList.getLength() > 0) {
 					result = nodeList.item(0).getTextContent();
-                }
-            }
-        } catch (Exception e) {
-            result = "failure";
-        }
+				}
+			}
+		} catch (Exception e) {
+			result = "failure";
+		}
 
-        return result;
-    }
+		return result;
+	}
 
 	private static String getServerUrl() {
 		final String customServerUrl = Config.getPref().get("osm-server.url");
