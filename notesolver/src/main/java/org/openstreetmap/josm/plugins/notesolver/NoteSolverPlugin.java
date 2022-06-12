@@ -410,15 +410,3 @@ public class NoteSolverPlugin extends Plugin {
 		MAIN, NOTELIST
 	};
 }
-
-class NoteList extends ArrayList<Note> {
-	private static final long serialVersionUID = 1L;
-	public boolean containsNote(Note checkNote) {
-		return
-			this.stream()
-			.filter((note) -> note.getId() == checkNote.getId())
-			.findFirst()
-			.orElse(null)
-			!= null;
-	}
-}
