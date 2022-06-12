@@ -306,35 +306,49 @@ public class NoteSolverPlugin extends Plugin {
 			boolean bEnaPre = selectedNote != null && rememberedNotes != null;
 			boolean bEnaLst = (bEnaPre && rememberedNotes.contains(selectedNote));
 			boolean bEnaCls = (bEnaPre && selectedNote.getState() == Note.State.CLOSED);
-			JMenuItem addAction = new JMenuItem(I18n.tr("Remember Note"));
-			addAction.setToolTipText(I18n.tr("Add the selected Note to the list of Notes that should be automatically closed when uploading a changeset"));
-			addAction.addActionListener(rememberNoteAction);
-			addAction.setEnabled(bEnaPre && !bEnaLst && !bEnaCls);
-			returnList.add(addAction);
-			JMenuItem removeAction = new JMenuItem(I18n.tr("Forget Note"));
-			removeAction.setToolTipText(I18n.tr("Remove the selected Note from the list of Notes that should be automatically closed when uploading a changeset"));
-			removeAction.addActionListener(forgetNoteAction);
-			removeAction.setEnabled(bEnaPre && bEnaLst);
-			returnList.add(removeAction);
+			returnList.add(
+				createMenuItem(
+					I18n.tr("Remember Note"), 
+					I18n.tr("Add the selected Note to the list of Notes that should be automatically closed when uploading a changeset"), 
+					rememberNoteAction, bEnaPre && !bEnaLst && !bEnaCls
+				)
+			);
+			returnList.add(
+				createMenuItem(
+					I18n.tr("Forget Note"), 
+					I18n.tr("Remove the selected Note from the list of Notes that should be automatically closed when uploading a changeset"), 
+					forgetNoteAction, bEnaPre && bEnaLst
+				)
+			);
 		} else if (menuType == menuTypes.NOTELIST) {
 			if (rememberedNotes != null) {
 				for(Note note : rememberedNotes) {
-					JMenuItem jMenuItem = new JMenuItem(NoteText.noteShortText(note));
-					jMenuItem.setToolTipText(note.getFirstComment().toString());
-					jMenuItem.addActionListener(new ActionListener() {
-						@Override
-						public void actionPerformed(ActionEvent ev) {
-							rememberedNotes.remove(note);
-							updateMenu();
-						}
-					});
-					jMenuItem.setEnabled(true);
-					returnList.add(jMenuItem);
+					returnList.add(
+						createMenuItem(
+							NoteText.noteShortText(note), 
+							note.getFirstComment().toString(),
+							new ActionListener() {
+								@Override
+								public void actionPerformed(ActionEvent ev) {
+									rememberedNotes.remove(note);
+									updateMenu();
+								}
+							}, true
+						)
+					);
 				}
 			}
 		}
 		return returnList;
 	}
+
+	private JMenuItem createMenuItem(String title, String tooltip, ActionListener al, boolean enabled) {
+		JMenuItem menuItem = new JMenuItem(title);
+		menuItem.setToolTipText(tooltip);
+		menuItem.addActionListener(al);
+		menuItem.setEnabled(enabled);
+		return menuItem;
+	} 
 
 	@Override
 	public void mapFrameInitialized(final MapFrame oldFrame, final MapFrame newFrame) {
