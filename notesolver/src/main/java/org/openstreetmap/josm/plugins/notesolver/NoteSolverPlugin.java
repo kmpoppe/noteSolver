@@ -355,12 +355,7 @@ public class NoteSolverPlugin extends Plugin {
 
 	private String getUrl(Object inputObject, Enum<linkTypes> linkType) {
 		String returnValue = "";
-		String customServerUrl = Config.getPref().get("osm-server.url");
-		String serverUrl = 
-			(customServerUrl != null && customServerUrl != "" ? 
-			customServerUrl.replace(".org/api", ".org") : 
-			"https://www.openstreetmap.org");
-		if (!serverUrl.endsWith("/")) serverUrl += "/";
+		String serverUrl = getServerUrl();
 		Long thisNumber = 0L;
 		if (linkType == linkTypes.NOTE) {
 			thisNumber = ((Note)inputObject).getId();
@@ -376,12 +371,7 @@ public class NoteSolverPlugin extends Plugin {
     private String getOnlineNoteStatus(long noteId) {
 		DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
 		String result = "";
-		String customServerUrl = Config.getPref().get("osm-server.url");
-		String apiUrl = 
-			(customServerUrl != null && customServerUrl != "" ? 
-			customServerUrl.replace(".org/api", ".org") : 
-			"https://www.openstreetmap.org")
-			+ "/api/0.6/notes/" + Long.toString(noteId);
+		String apiUrl = getServerUrl() + "api/0.6/notes/" + Long.toString(noteId);
 
         try {
             URLConnection conn = new URL(apiUrl).openConnection();
@@ -402,6 +392,16 @@ public class NoteSolverPlugin extends Plugin {
 
         return result;
     }
+
+	private static String getServerUrl() {
+		final String customServerUrl = Config.getPref().get("osm-server.url");
+		String serverUrl = 
+			(customServerUrl != null && customServerUrl != "" ? 
+			customServerUrl.replace(".org/api", ".org") : 
+			"https://www.openstreetmap.org");
+		if (!serverUrl.endsWith("/")) serverUrl += "/";
+		return serverUrl;
+	}
 
 	private enum linkTypes {
 		NOTE, CHANGESET
