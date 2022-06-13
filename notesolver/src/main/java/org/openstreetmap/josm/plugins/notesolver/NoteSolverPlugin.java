@@ -26,6 +26,8 @@ import org.openstreetmap.josm.spi.preferences.Config;
 import org.openstreetmap.josm.tools.I18n;
 
 import java.awt.event.*;
+import java.beans.PropertyChangeEvent;
+import java.beans.PropertyChangeListener;
 import java.awt.*;
 import javax.swing.*;
 
@@ -47,8 +49,9 @@ public class NoteSolverPlugin extends Plugin {
 	public Note selectedNote;
 	private int lastChangeSet;
 	private boolean autoUploadDecision = false;
+	private int requiresUploadCount = 0;
+
 	NoteSolverPlugin me = this;
-	String crLf = "" + (char)13 + (char)10;
 	private PluginInformation myPluginInformation;
 
 	public NoteSolverPlugin(final PluginInformation info) {
@@ -81,12 +84,11 @@ public class NoteSolverPlugin extends Plugin {
 		public boolean checkUpload(APIDataSet apiDataSet) {
 			boolean returnValue = true;
 			if (rememberedNotes != null && rememberedNotes.size() > 0) {
-				String noteList = "";
 				for (Note note : solvedNotes)
 					if (rememberedNotes.containsNote(note)) rememberedNotes.remove(note);
 
-				for (Note note : rememberedNotes)
-					noteList = noteList + crLf + NoteText.noteShortText(note);
+				StringBuilder noteList = new StringBuilder();
+				rememberedNotes.forEach((n) -> noteList.append("\n" + NoteText.noteShortText(n)));
 
 				int outVal = JOptionPane.showConfirmDialog(
 					null,
@@ -198,6 +200,7 @@ public class NoteSolverPlugin extends Plugin {
 				DataSet ds = ((OsmDataLayer) layer).getDataSet();
 				if (!isRemove) {
 					ds.addDataSetListener(dataSetListener);
+					layer.addPropertyChangeListener(propertyChangeListener);
 				} else {
 					ds.removeDataSetListener(dataSetListener);
 				}
@@ -212,35 +215,45 @@ public class NoteSolverPlugin extends Plugin {
 		}
 	};
 
+	private final PropertyChangeListener propertyChangeListener = new PropertyChangeListener() {
+		@Override
+		public void propertyChange(PropertyChangeEvent e) {
+			if (e.getPropertyName().endsWith("OsmDataLayer.requiresUploadToServer")) {
+				requiresUploadCount += ((Boolean)e.getNewValue() ? 1 : -1);
+			}
+		}
+	};
+
 	private final DataSetListener dataSetListener = new DataSetListener() {
 		@Override
 		public void otherDatasetChange(AbstractDatasetChangedEvent event)
 		{
-			ProgressMonitor pm = null;
 			if (event.getType() == AbstractDatasetChangedEvent.DatasetEventType.CHANGESET_ID_CHANGED && autoUploadDecision) {
-				int thisChangeSet = event.getPrimitives().iterator().next().getChangesetId();
-				if (lastChangeSet != thisChangeSet) {
-					lastChangeSet = thisChangeSet;
-					for (Note note : rememberedNotes) {
-						String cOnlineStatus = getOnlineNoteStatus(note.getId());
-						NoteData noteData = new NoteData(java.util.Collections.singleton(note));
-						if (note.getState() == State.OPEN && cOnlineStatus.toLowerCase().trim().equals("open")) {
-							try {
-								noteData.closeNote(note, I18n.tr("Resolved with changeset {0} by noteSolver_plugin/{1}", getUrl(thisChangeSet, linkTypes.CHANGESET), myPluginInformation.version));
-								UploadNotesTask uploadNotesTask = new UploadNotesTask();
-								uploadNotesTask.uploadNotes(noteData, pm);
-							} catch (Exception e) {
-								JOptionPane.showMessageDialog(null, I18n.tr("Upload Note exception:\n{0}", e.getMessage()));
-							}
-						} else {
-							JOptionPane.showMessageDialog(null, I18n.tr("Note {0} was already closed outside of JOSM", Long.toString(note.getId())));
+				lastChangeSet = ((ChangesetIdChangedEvent) event).getNewChangesetId();
+			}
+			ProgressMonitor pm = null;
+			if (event.getType() == AbstractDatasetChangedEvent.DatasetEventType.PRIMITIVE_FLAGS_CHANGED && autoUploadDecision && requiresUploadCount == 0 && lastChangeSet > 0) {
+				for (Note note : rememberedNotes) {
+					String cOnlineStatus = getOnlineNoteStatus(note.getId());
+					NoteData noteData = new NoteData(java.util.Collections.singleton(note));
+					if (note.getState() == State.OPEN && cOnlineStatus.toLowerCase().trim().equals("open")) {
+						try {
+							noteData.closeNote(note, I18n.tr("Resolved with changeset {0} by noteSolver_plugin/{1}", getUrl(lastChangeSet, linkTypes.CHANGESET), myPluginInformation.version));
+							UploadNotesTask uploadNotesTask = new UploadNotesTask();
+							uploadNotesTask.uploadNotes(noteData, pm);
+						} catch (Exception e) {
+							JOptionPane.showMessageDialog(null, I18n.tr("Upload Note exception:\n{0}", e.getMessage()));
 						}
-						solvedNotes.add(note);
+					} else {
+						JOptionPane.showMessageDialog(null, I18n.tr("Note {0} was already closed outside of JOSM", Long.toString(note.getId())));
 					}
-					rememberedNotes = new NoteList();
-					event.getDataset().addChangeSetTag("comment", "");
-					updateMenu();
+					solvedNotes.add(note);
 				}
+				rememberedNotes = new NoteList();
+				event.getDataset().addChangeSetTag("comment", "");
+				updateMenu();
+				autoUploadDecision = false;
+				lastChangeSet = 0;
 			}
 		}
 
