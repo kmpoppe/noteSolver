@@ -159,7 +159,21 @@ public class NoteSolverPlugin extends Plugin {
 			updateMenu();
 		}
 	};
-
+	private final JosmAction openNoteAction = new JosmAction() {
+		private static final long serialVersionUID = 1927873880648933881L;
+		@Override
+		public void actionPerformed(ActionEvent event) {
+			if (selectedNote == null) {
+				JOptionPane.showMessageDialog(null, I18n.tr("No Note selected."));
+			} else {
+				if (selectedNote != null) {
+					MultiBrowserOpen oMbo = new MultiBrowserOpen();
+					oMbo.openUrl("https://www.openstreetmap.org/note/" + Long.toString(selectedNote.getId()));
+				}
+			}
+			updateMenu();
+		}
+	};
 	private final NoteDataUpdateListener noteDataUpdateListener = new NoteDataUpdateListener() {
 		@Override
 		public void selectedNoteChanged(NoteData noteData) {
@@ -331,9 +345,17 @@ public class NoteSolverPlugin extends Plugin {
 	private List<JMenuItem> mainMenuEntries(Enum<menuTypes> menuType) {
 		List<JMenuItem> returnList = new ArrayList<>();
 		if (menuType == menuTypes.MAIN) {
+			boolean bEnaOpn = selectedNote != null;
 			boolean bEnaPre = selectedNote != null && rememberedNotes != null;
 			boolean bEnaLst = (bEnaPre && rememberedNotes.contains(selectedNote));
 			boolean bEnaCls = (bEnaPre && selectedNote.getState() == Note.State.CLOSED);
+			returnList.add(
+				createMenuItem(
+					I18n.tr("Open in browser"),
+					I18n.tr("Try to open the Note on osm.org with the operating system's standard browser"),
+					openNoteAction, bEnaOpn
+				)
+			);
 			returnList.add(
 				createMenuItem(
 					I18n.tr("Remember Note"), 
