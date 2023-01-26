@@ -168,13 +168,18 @@ public class NoteSolverPlugin extends Plugin {
 				JPopupMenu contextMenu = new JPopupMenu();
 				for (JMenuItem menuItem : mainMenuEntries(menuTypes.MAIN)) 
 					contextMenu.add(menuItem);
-				Point p = MainApplication.getMainFrame().getMousePosition();
+				Dimension size = contextMenu.getPreferredSize();
+				MainFrame frame = MainApplication.getMainFrame();
+				Point p = frame.getMousePosition();
 				if (p != null) {
 					Component c = MainApplication.getMainFrame().getComponentAt(p);
+					SwingUtilities.convertPointToScreen(p, frame);
 					JComponent jc = (JComponent)c;
 					if (c != null) {
 						contextMenu.setInvoker(c);
-						contextMenu.setLocation(p);
+						// Show menu slightly above the desired location; otherwise we clash with the
+						// note content shown in the map.
+						contextMenu.setLocation(p.x, p.y - size.height - 15);
 						jc.setComponentPopupMenu(contextMenu);
 						contextMenu.setEnabled(true);
 						contextMenu.setVisible(true);
