@@ -1,0 +1,91 @@
+msgid ""
+msgstr ""
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: POEditor.com\n"
+"Project-Id-Version: noteSolver JOSM Plugin\n"
+"Language: pnb\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: src\main\java\org\openstreetmap\josm\plugins\notesolver\NoteSolverPlugin.java:362
+msgid "Add the selected Note to the list of Notes that should be automatically closed when uploading a changeset"
+msgstr "نوٹاں دی سوچی کی سویچالت بند کرنی چاہیدی، جدوں چڑھؤندیاں تبدیلیاں، وچ چݨیا نوٹ شمل کرو"
+
+#: src\main\java\org\openstreetmap\josm\plugins\notesolver\NoteSolverPlugin.java:95
+msgid "Automatically Resolve Note\n"
+"{0}?"
+msgid_plural "Automatically Resolve Notes\n"
+"{0}?"
+msgstr[0] "نوٹ سویچالت حل کریؤ؟\n"
+"{0}"
+msgstr[1] "نوٹ سویچالت حل کریؤ؟\n"
+"{0}"
+
+#: src\main\java\org\openstreetmap\josm\plugins\notesolver\NoteSolverPlugin.java:107
+#: src\main\java\org\openstreetmap\josm\plugins\notesolver\NoteSolverPlugin.java:114
+msgid "Closes {0}"
+msgstr "{0} بند کردا اے"
+
+#: src\main\java\org\openstreetmap\josm\plugins\notesolver\NoteSolverPlugin.java:368
+msgid "Forget Note"
+msgstr "نوٹ بھل جاؤ"
+
+#: src\main\java\org\openstreetmap\josm\plugins\notesolver\NoteSolverPlugin.java:338
+msgid "List of selected Notes"
+msgstr "چݨے نوٹاں دی سوچی"
+
+#: src\main\java\org\openstreetmap\josm\plugins\notesolver\NoteSolverPlugin.java:141
+#: src\main\java\org\openstreetmap\josm\plugins\notesolver\NoteSolverPlugin.java:154
+#: src\main\java\org\openstreetmap\josm\plugins\notesolver\NoteSolverPlugin.java:167
+msgid "No Note selected."
+msgstr "نوٹ نہیں چݨیا"
+
+#: src\main\java\org\openstreetmap\josm\plugins\notesolver\NoteSolverPlugin.java:276
+msgid "Note {0} was already closed outside of JOSM"
+msgstr "نوٹ {0} پہلاں ہی جے او ایس ایم توں باہر بند سی"
+
+#: src\main\java\org\openstreetmap\josm\plugins\notesolver\NoteSolverPlugin.java:361
+msgid "Remember Note"
+msgstr "نوٹ یاد رکھ"
+
+#: src\main\java\org\openstreetmap\josm\plugins\notesolver\NoteSolverPlugin.java:369
+msgid "Remove the selected Note from the list of Notes that should be automatically closed when uploading a changeset"
+msgstr "نوٹاں سوچی کی سوچالت بند کرنی چہیدی، جدوں چڑھؤندیاں تبدیلیاں، وچ چݨیا نوٹ اُتارو"
+
+#: src\main\java\org\openstreetmap\josm\plugins\notesolver\NoteSolverPlugin.java:269
+msgid "Resolved with changeset {0} by noteSolver_plugin/{1}"
+msgstr "notesSolver_plugin/{1}‎ ؜دُارا تبدیلیاں {0} وچ حل کیتی گئی سی"
+
+#: src\main\java\org\openstreetmap\josm\plugins\notesolver\NoteSolverPlugin.java:273
+msgid "Upload Note exception:\n"
+"{0}"
+msgstr "چوٹ دا نوٹ چرھاؤ:\n"
+"{0}"
+
+#. Plugin description for root project 'notesolver'.name
+#: 
+msgid "Used for closing notes when uploading a changeset and referencing them in each other's comments to keep references."
+msgstr "نوٹ بند کرن لئی ورتے جاندے جدوں چڑھؤندیاں تبدیلیاں اتے تپݨیاں وچ حوالہ دیݨ لئی۔"
+
+#: src\main\java\org\openstreetmap\josm\plugins\notesolver\NoteSolverPlugin.java:354
+msgid "Open in browser"
+msgstr ""
+
+#: src\main\java\org\openstreetmap\josm\plugins\notesolver\NoteSolverPlugin.java:355
+msgid "Try to open the Note on osm.org with the operating system's standard browser"
+msgstr ""
+
+#: src\main\java\org\openstreetmap\josm\plugins\notesolver\SettingsDialog.java:25
+msgid "Use your language in Changeset Comments"
+msgstr ""
+
+#: src\main\java\org\openstreetmap\josm\plugins\notesolver\SettingsDialog.java:26
+msgid "Use your language in Note Comments"
+msgstr ""
+
+#. Translator credits (translators who want to be credited for their contributions can add their names here as the translation)
+#: 
+msgid "translator-credits"
+msgstr ""
+
