@@ -124,6 +124,15 @@ public class NoteSolverPlugin extends Plugin {
 		}
 	};
 
+	private final JosmAction settingsDialogMenu = new JosmAction() {
+		private static final long serialVersionUID = 1927873880648933878L;
+		//SettingsDialog sd = new ();
+		@Override
+		public void actionPerformed(ActionEvent event) {
+			boolean retVal = SettingsDialog.showSettingsDialog();
+		}
+	};
+
 	private final JosmAction forgetNoteAction = new JosmAction() {
 		private static final long serialVersionUID = 1927873880648933879L;
 		@Override
@@ -301,6 +310,7 @@ public class NoteSolverPlugin extends Plugin {
 
 	public void updateMenu() {
 		noteSolverMenu.removeAll();
+		noteSolverMenu.add(createMenuItem("Settings", "Plugin settings", settingsDialogMenu, true));
 		for (JMenuItem j : mainMenuEntries(menuTypes.MAIN)) {
 			noteSolverMenu.add(j);
 		}
