@@ -103,6 +103,7 @@ public class NoteSolverPlugin extends Plugin {
 					autoUploadDecision = (outVal == JOptionPane.YES_OPTION);
 					if (autoUploadDecision) {
 						String comment = MainApplication.getLayerManager().getEditDataSet().getChangeSetTags().get("comment");
+						String closedNoteTag = "";
 						for (Note note : solvedNotes) {
 							String noteLink = I18n.tr("Closes {0}", getUrl(note, linkTypes.NOTE));
 							if (comment != null) {
@@ -113,9 +114,11 @@ public class NoteSolverPlugin extends Plugin {
 						for (Note note : rememberedNotes) {
 							String noteLink = I18n.tr("Closes {0}", getUrl(note, linkTypes.NOTE));
 							comment = (comment != null ? (comment.contains(noteLink) ? comment : comment + "; " + noteLink) : noteLink);
+							closedNoteTag = closedNoteTag + (closedNoteTag != "" ? ";" : "") + Long.toString(note.getId());
 						}
 						MainApplication.getLayerManager().getEditDataSet().addChangeSetTag("created_by", "noteSolver_plugin/" + myPluginInformation.version);
 						MainApplication.getLayerManager().getEditDataSet().addChangeSetTag("comment", comment);
+						MainApplication.getLayerManager().getEditDataSet().addChangeSetTag("closed:note", closedNoteTag);
 					}
 					returnValue = true;
 				}
