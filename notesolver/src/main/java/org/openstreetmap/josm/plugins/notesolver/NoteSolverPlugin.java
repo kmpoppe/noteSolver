@@ -24,6 +24,7 @@ import org.openstreetmap.josm.plugins.*;
 import org.openstreetmap.josm.spi.preferences.Config;
 
 import org.openstreetmap.josm.tools.I18n;
+import org.openstreetmap.josm.tools.OpenBrowser;
 
 import java.awt.event.*;
 import java.beans.PropertyChangeEvent;
@@ -170,8 +171,8 @@ public class NoteSolverPlugin extends Plugin {
 				JOptionPane.showMessageDialog(null, I18n.tr("No Note selected."));
 			} else {
 				if (selectedNote != null) {
-					MultiBrowserOpen oMbo = new MultiBrowserOpen();
-					oMbo.openUrl("https://www.openstreetmap.org/note/" + Long.toString(selectedNote.getId()));
+					//OpenBrowser oBrowser = new OpenBrowser();
+					OpenBrowser.displayUrl("https://www.openstreetmap.org/note/" + Long.toString(selectedNote.getId()));
 				}
 			}
 			updateMenu();
@@ -282,6 +283,7 @@ public class NoteSolverPlugin extends Plugin {
 				}
 				rememberedNotes = new NoteList();
 				event.getDataset().addChangeSetTag("comment", "");
+				event.getDataset().addChangeSetTag("closed:note", "");
 				updateMenu();
 				autoUploadDecision = false;
 				lastChangeSet = 0;
@@ -333,6 +335,7 @@ public class NoteSolverPlugin extends Plugin {
 	public void updateMenu() {
 		noteSolverMenu.removeAll();
 		noteSolverMenu.add(createMenuItem("Settings", "Plugin settings", settingsDialogMenu, true));
+		noteSolverMenu.addSeparator();
 		for (JMenuItem j : mainMenuEntries(menuTypes.MAIN)) {
 			noteSolverMenu.add(j);
 		}
