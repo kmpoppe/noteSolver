@@ -8,11 +8,11 @@ msgstr ""
 "Language: nl\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: src\main\java\org\openstreetmap\josm\plugins\notesolver\NoteSolverPlugin.java:311
+#: src\main\java\org\openstreetmap\josm\plugins\notesolver\NoteSolverPlugin.java:369
 msgid "Add the selected Note to the list of Notes that should be automatically closed when uploading a changeset"
 msgstr "Voeg de geselecteerde opmerking toe aan de lijst van opmerkingen die automatisch gesloten moeten worden wanneer een wijzigingenset wordt geüpload"
 
-#: src\main\java\org\openstreetmap\josm\plugins\notesolver\NoteSolverPlugin.java:94
+#: src\main\java\org\openstreetmap\josm\plugins\notesolver\NoteSolverPlugin.java:96
 msgid "Automatically Resolve Note\n"
 "{0}?"
 msgid_plural "Automatically Resolve Notes\n"
@@ -23,42 +23,41 @@ msgstr[1] "Los opmerkingen automatisch op\n"
 "{0}?"
 
 #. Need more context please :)
-#: src\main\java\org\openstreetmap\josm\plugins\notesolver\NoteSolverPlugin.java:106
-#: src\main\java\org\openstreetmap\josm\plugins\notesolver\NoteSolverPlugin.java:113
-#, fuzzy
+#: src\main\java\org\openstreetmap\josm\plugins\notesolver\NoteSolverPlugin.java:485
 msgid "Closes {0}"
 msgstr "Sluit {0}"
 
-#: src\main\java\org\openstreetmap\josm\plugins\notesolver\NoteSolverPlugin.java:315
+#: src\main\java\org\openstreetmap\josm\plugins\notesolver\NoteSolverPlugin.java:375
 msgid "Forget Note"
 msgstr "Vergeet opmerking"
 
-#: src\main\java\org\openstreetmap\josm\plugins\notesolver\NoteSolverPlugin.java:297
+#: src\main\java\org\openstreetmap\josm\plugins\notesolver\NoteSolverPlugin.java:345
 msgid "List of selected Notes"
 msgstr "Lijst van geselecteerde opmerkingen"
 
-#: src\main\java\org\openstreetmap\josm\plugins\notesolver\NoteSolverPlugin.java:131
-#: src\main\java\org\openstreetmap\josm\plugins\notesolver\NoteSolverPlugin.java:144
+#: src\main\java\org\openstreetmap\josm\plugins\notesolver\NoteSolverPlugin.java:146
+#: src\main\java\org\openstreetmap\josm\plugins\notesolver\NoteSolverPlugin.java:159
+#: src\main\java\org\openstreetmap\josm\plugins\notesolver\NoteSolverPlugin.java:172
 msgid "No Note selected."
 msgstr "Geen opmerking geselecteerd."
 
-#: src\main\java\org\openstreetmap\josm\plugins\notesolver\NoteSolverPlugin.java:237
+#: src\main\java\org\openstreetmap\josm\plugins\notesolver\NoteSolverPlugin.java:281
 msgid "Note {0} was already closed outside of JOSM"
 msgstr "Opmerking {0} werd reeds buiten JOSM gesloten"
 
-#: src\main\java\org\openstreetmap\josm\plugins\notesolver\NoteSolverPlugin.java:310
+#: src\main\java\org\openstreetmap\josm\plugins\notesolver\NoteSolverPlugin.java:368
 msgid "Remember Note"
 msgstr "Onthoud opmerking"
 
-#: src\main\java\org\openstreetmap\josm\plugins\notesolver\NoteSolverPlugin.java:316
+#: src\main\java\org\openstreetmap\josm\plugins\notesolver\NoteSolverPlugin.java:376
 msgid "Remove the selected Note from the list of Notes that should be automatically closed when uploading a changeset"
 msgstr "Verwijder de geselecteerde opmerking van de lijst met opmerkingen die automatisch gesloten moeten worden wanneer een wijzigingenset wordt geüpload"
 
-#: src\main\java\org\openstreetmap\josm\plugins\notesolver\NoteSolverPlugin.java:230
+#: src\main\java\org\openstreetmap\josm\plugins\notesolver\NoteSolverPlugin.java:498
 msgid "Resolved with changeset {0} by noteSolver_plugin/{1}"
 msgstr "Opgelost met wijzigingenset {0} door noteSolver_plugin/{1}"
 
-#: src\main\java\org\openstreetmap\josm\plugins\notesolver\NoteSolverPlugin.java:234
+#: src\main\java\org\openstreetmap\josm\plugins\notesolver\NoteSolverPlugin.java:278
 #, fuzzy
 msgid "Upload Note exception:\n"
 "{0}"
@@ -68,5 +67,54 @@ msgstr "Upload opmerking uitzondering:\n"
 #. Plugin description for root project 'notesolver'.name
 #: 
 msgid "Used for closing notes when uploading a changeset and referencing them in each other's comments to keep references."
-msgstr "Gebruikt voor het sluiten van opmerkingen bij het uploaden van wijzigingensets en voor verwijzingen te kunnen maken in elkaars overleg."
+msgstr "Gebruikt voor het sluiten van opmerkingen bij het uploaden van wijzigingensets en voor het maken van verwijzingen en referenties in elkaars overleg."
+
+#: src\main\java\org\openstreetmap\josm\plugins\notesolver\NoteSolverPlugin.java:361
+msgid "Open in browser"
+msgstr "Open in browser"
+
+#: src\main\java\org\openstreetmap\josm\plugins\notesolver\NoteSolverPlugin.java:362
+msgid "Try to open the Note on osm.org with the operating system's standard browser"
+msgstr "Probeer de opmerking te openen op osm.org met de standaardbrowser"
+
+#: src\main\java\org\openstreetmap\josm\plugins\notesolver\SettingsDialog.java:25
+msgid "Use your language in Changeset Comments"
+msgstr "Gebruik je taal in het overleg bij wijzigingensets"
+
+#: src\main\java\org\openstreetmap\josm\plugins\notesolver\SettingsDialog.java:26
+msgid "Use your language in Note Comments"
+msgstr "Gebruik je taal in het overleg bij opmerkingen"
+
+#. Translator credits (translators who want to be credited for their contributions can add their names here as the translation)
+#: 
+msgid "translator-credits"
+msgstr "pi11"
+
+#: src\main\java\org\openstreetmap\josm\plugins\notesolver\SettingsDialog.java:44
+msgid "##noteSolver:CID## for the Changeset number in the Note Comment"
+msgstr "##noteSolver:CID## voor het getal van de wijzigingenset in het overleg bij de opmerking"
+
+#: src\main\java\org\openstreetmap\josm\plugins\notesolver\SettingsDialog.java:46
+msgid "##noteSolver:LC## for a Link to the Changeset in the Note Comment"
+msgstr "##noteSolver:LC## voor een link naar de wijzigingenset in het overleg bij de opmerking"
+
+#: src\main\java\org\openstreetmap\josm\plugins\notesolver\SettingsDialog.java:45
+msgid "##noteSolver:LN## for a Link to the Note in the Changeset Comment"
+msgstr "##noteSolver:LN## voor een link naar de opmerking in het overleg bij de wijzigingenset"
+
+#: src\main\java\org\openstreetmap\josm\plugins\notesolver\SettingsDialog.java:43
+msgid "##noteSolver:NID## for the Note ID in the Changeset Comment"
+msgstr "##noteSolver:NID## voor het nummer van de opmerking in het overleg bij de wijzigingenset"
+
+#: src\main\java\org\openstreetmap\josm\plugins\notesolver\SettingsDialog.java:42
+msgid "Placeholders:"
+msgstr "Plaatshouders:"
+
+#: src\main\java\org\openstreetmap\josm\plugins\notesolver\SettingsDialog.java:37
+msgid "Use this Changeset Comment rather than the default message:"
+msgstr "Gebruik deze wijzegingensetopmerking in plaats van de standaard opmerking:"
+
+#: src\main\java\org\openstreetmap\josm\plugins\notesolver\SettingsDialog.java:39
+msgid "Use this Note Comment rather than the default message:"
+msgstr "Gebruik deze kaartopmerking in plaats van de standaard opmerking:"
 
