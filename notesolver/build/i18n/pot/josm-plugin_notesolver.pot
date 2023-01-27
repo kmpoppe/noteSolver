@@ -1,0 +1,135 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2023 THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the josm-plugin_notesolver package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: josm-plugin_notesolver 0.5.0-beta2-5-g111cbe2-SNAPSHOT\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2023-01-27 16:34+0100\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
+
+#: src\main\java\org\openstreetmap\josm\plugins\notesolver\SettingsDialog.java:44
+msgid "##noteSolver:CID## for the Changeset number in the Note Comment"
+msgstr ""
+
+#: src\main\java\org\openstreetmap\josm\plugins\notesolver\SettingsDialog.java:46
+msgid "##noteSolver:LC## for a Link to the Changeset in the Note Comment"
+msgstr ""
+
+#: src\main\java\org\openstreetmap\josm\plugins\notesolver\SettingsDialog.java:45
+msgid "##noteSolver:LN## for a Link to the Note in the Changeset Comment"
+msgstr ""
+
+#: src\main\java\org\openstreetmap\josm\plugins\notesolver\SettingsDialog.java:43
+msgid "##noteSolver:NID## for the Note ID in the Changeset Comment"
+msgstr ""
+
+#: src\main\java\org\openstreetmap\josm\plugins\notesolver\NoteSolverPlugin.java:369
+msgid ""
+"Add the selected Note to the list of Notes that should be automatically "
+"closed when uploading a changeset"
+msgstr ""
+
+#: src\main\java\org\openstreetmap\josm\plugins\notesolver\NoteSolverPlugin.java:96
+#, java-format
+msgid ""
+"Automatically Resolve Note\n"
+"{0}?"
+msgid_plural ""
+"Automatically Resolve Notes\n"
+"{0}?"
+msgstr[0] ""
+msgstr[1] ""
+
+#: src\main\java\org\openstreetmap\josm\plugins\notesolver\NoteSolverPlugin.java:485
+#, java-format
+msgid "Closes {0}"
+msgstr ""
+
+#: src\main\java\org\openstreetmap\josm\plugins\notesolver\NoteSolverPlugin.java:375
+msgid "Forget Note"
+msgstr ""
+
+#: src\main\java\org\openstreetmap\josm\plugins\notesolver\NoteSolverPlugin.java:345
+msgid "List of selected Notes"
+msgstr ""
+
+#: src\main\java\org\openstreetmap\josm\plugins\notesolver\NoteSolverPlugin.java:146
+#: src\main\java\org\openstreetmap\josm\plugins\notesolver\NoteSolverPlugin.java:159
+#: src\main\java\org\openstreetmap\josm\plugins\notesolver\NoteSolverPlugin.java:172
+msgid "No Note selected."
+msgstr ""
+
+#: src\main\java\org\openstreetmap\josm\plugins\notesolver\NoteSolverPlugin.java:281
+#, java-format
+msgid "Note {0} was already closed outside of JOSM"
+msgstr ""
+
+#: src\main\java\org\openstreetmap\josm\plugins\notesolver\NoteSolverPlugin.java:361
+msgid "Open in browser"
+msgstr ""
+
+#: src\main\java\org\openstreetmap\josm\plugins\notesolver\SettingsDialog.java:42
+msgid "Placeholders:"
+msgstr ""
+
+#: src\main\java\org\openstreetmap\josm\plugins\notesolver\NoteSolverPlugin.java:368
+msgid "Remember Note"
+msgstr ""
+
+#: src\main\java\org\openstreetmap\josm\plugins\notesolver\NoteSolverPlugin.java:376
+msgid ""
+"Remove the selected Note from the list of Notes that should be automatically "
+"closed when uploading a changeset"
+msgstr ""
+
+#: src\main\java\org\openstreetmap\josm\plugins\notesolver\NoteSolverPlugin.java:498
+#, java-format
+msgid "Resolved with changeset {0} by noteSolver_plugin/{1}"
+msgstr ""
+
+#: src\main\java\org\openstreetmap\josm\plugins\notesolver\NoteSolverPlugin.java:362
+msgid ""
+"Try to open the Note on osm.org with the operating system's standard browser"
+msgstr ""
+
+#: src\main\java\org\openstreetmap\josm\plugins\notesolver\NoteSolverPlugin.java:278
+#, java-format
+msgid ""
+"Upload Note exception:\n"
+"{0}"
+msgstr ""
+
+#: src\main\java\org\openstreetmap\josm\plugins\notesolver\SettingsDialog.java:37
+msgid "Use this Changeset Comment rather than the default message:"
+msgstr ""
+
+#: src\main\java\org\openstreetmap\josm\plugins\notesolver\SettingsDialog.java:39
+msgid "Use this Note Comment rather than the default message:"
+msgstr ""
+
+#: src\main\java\org\openstreetmap\josm\plugins\notesolver\SettingsDialog.java:25
+msgid "Use your language in Changeset Comments"
+msgstr ""
+
+#: src\main\java\org\openstreetmap\josm\plugins\notesolver\SettingsDialog.java:26
+msgid "Use your language in Note Comments"
+msgstr ""
+
+#. Plugin description for notesolver
+msgid "Used for closing notes when uploading a changeset and referencing them in each other's comments to keep references."
+msgstr ""
+
+#. Translator credits (translators who want to be credited for their contributions can add their names here as the translation)
+msgid "translator-credits"
+msgstr ""
