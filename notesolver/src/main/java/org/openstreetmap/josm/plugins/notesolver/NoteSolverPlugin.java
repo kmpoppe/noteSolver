@@ -105,15 +105,16 @@ public class NoteSolverPlugin extends Plugin {
 					if (autoUploadDecision) {
 						String comment = MainApplication.getLayerManager().getEditDataSet().getChangeSetTags().get("comment");
 						String closedNoteTag = "";
+						String noteLink = "";
 						for (Note note : solvedNotes) {
-							String noteLink = I18n.tr("Closes {0}", getUrl(note, linkTypes.NOTE));
+							noteLink = getChangesetComment(note);
 							if (comment != null) {
 								comment = comment.replace("; " + noteLink, "");
 								comment = comment.replace(noteLink, "");
 							}
 						}
 						for (Note note : rememberedNotes) {
-							String noteLink = I18n.tr("Closes {0}", getUrl(note, linkTypes.NOTE));
+							noteLink = getChangesetComment(note);
 							comment = (comment != null ? (comment.contains(noteLink) ? comment : comment + "; " + noteLink) : noteLink);
 							closedNoteTag = closedNoteTag + (closedNoteTag != "" ? ";" : "") + Long.toString(note.getId());
 						}
@@ -171,8 +172,7 @@ public class NoteSolverPlugin extends Plugin {
 				JOptionPane.showMessageDialog(null, I18n.tr("No Note selected."));
 			} else {
 				if (selectedNote != null) {
-					//OpenBrowser oBrowser = new OpenBrowser();
-					OpenBrowser.displayUrl("https://www.openstreetmap.org/note/" + Long.toString(selectedNote.getId()));
+					OpenBrowser.displayUrl(getServerUrl() + "note/" + Long.toString(selectedNote.getId()));
 				}
 			}
 			updateMenu();
@@ -268,9 +268,10 @@ public class NoteSolverPlugin extends Plugin {
 				for (Note note : rememberedNotes) {
 					String cOnlineStatus = getOnlineNoteStatus(note.getId());
 					NoteData noteData = new NoteData(java.util.Collections.singleton(note));
+					String noteComment = getNoteComment(lastChangeSet);
 					if (note.getState() == State.OPEN && cOnlineStatus.toLowerCase().trim().equals("open")) {
 						try {
-							noteData.closeNote(note, I18n.tr("Resolved with changeset {0} by noteSolver_plugin/{1}", getUrl(lastChangeSet, linkTypes.CHANGESET), myPluginInformation.version));
+							noteData.closeNote(note, noteComment);
 							UploadNotesTask uploadNotesTask = new UploadNotesTask();
 							uploadNotesTask.uploadNotes(noteData, pm);
 						} catch (Exception e) {
@@ -471,6 +472,33 @@ public class NoteSolverPlugin extends Plugin {
 			"https://www.openstreetmap.org");
 		if (!serverUrl.endsWith("/")) serverUrl += "/";
 		return serverUrl;
+	}
+
+	private String getChangesetComment(Note note) {
+		String retVal = String.format("Closes %s", getUrl(note, linkTypes.NOTE));
+		if (Config.getPref().get("noteSolver.overrideChangesetComment") != "") {
+			retVal = Config.getPref().get("noteSolver.overrideChangesetComment");
+			retVal = retVal.replace("##noteSolver:NID##", Long.toString(note.getId()));
+			retVal = retVal.replace("##noteSolver:LN##", getUrl(note, linkTypes.NOTE));
+		} else {
+			if (Config.getPref().getBoolean("noteSolver.useLocalLanguageInChangeset")) {
+				retVal = I18n.tr("Closes {0}", getUrl(note, linkTypes.NOTE));
+			}
+		}
+		return retVal;
+	}
+	private String getNoteComment(Integer changesetID) {
+		String retVal = String.format("Resolved with changeset %s by noteSolver_plugin/%s", getUrl(changesetID, linkTypes.CHANGESET), myPluginInformation.version);
+		if (Config.getPref().get("noteSolver.overrideNoteComment") != "") {
+			retVal = Config.getPref().get("noteSolver.overrideNoteComment");
+			retVal = retVal.replace("##noteSolver:CID##", Integer.toString(changesetID));
+			retVal = retVal.replace("##noteSolver:LC##", getUrl(changesetID, linkTypes.CHANGESET));
+		} else {
+			if (Config.getPref().getBoolean("noteSolver.useLocalLanguageInNote")) {
+				retVal = I18n.tr("Resolved with changeset {0} by noteSolver_plugin/{1}", getUrl(changesetID, linkTypes.CHANGESET), myPluginInformation.version);
+			}
+		}
+		return retVal;
 	}
 
 	private enum linkTypes {
