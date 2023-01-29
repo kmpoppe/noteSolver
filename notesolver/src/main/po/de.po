@@ -98,7 +98,7 @@ msgstr "Über"
 #: src\main\java\org\openstreetmap\josm\plugins\notesolver\AboutDialog.java:77
 #: src\main\java\org\openstreetmap\josm\plugins\notesolver\NoteSolverPlugin.java:357
 msgid "About noteSolver Plugin"
-msgstr "Üner noteSolver Erweiterung"
+msgstr "Über noteSolver Plugin"
 
 #: src\main\java\org\openstreetmap\josm\plugins\notesolver\NoteSolverPlugin.java:96
 msgid "Automatically resolve Note\n"
