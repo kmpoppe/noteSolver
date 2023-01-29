@@ -6,9 +6,9 @@
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: josm-plugin_notesolver 0.5.0-beta3-5-g119621b-SNAPSHOT\n"
+"Project-Id-Version: josm-plugin_notesolver 0.5.0-beta4-SNAPSHOT\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-01-29 11:30+0100\n"
+"POT-Creation-Date: 2023-01-29 11:42+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -149,19 +149,19 @@ msgid ""
 msgstr ""
 
 #: src\main\java\org\openstreetmap\josm\plugins\notesolver\SettingsDialog.java:39
-msgid "Use this Note Comment rather than the default message:"
+msgid "Use this Note comment rather than the default message:"
 msgstr ""
 
 #: src\main\java\org\openstreetmap\josm\plugins\notesolver\SettingsDialog.java:37
 msgid "Use this changeset comment rather than the default message:"
 msgstr ""
 
-#: src\main\java\org\openstreetmap\josm\plugins\notesolver\SettingsDialog.java:25
-msgid "Use your language in Changeset Comments"
+#: src\main\java\org\openstreetmap\josm\plugins\notesolver\SettingsDialog.java:26
+msgid "Use your language in Note comments"
 msgstr ""
 
-#: src\main\java\org\openstreetmap\josm\plugins\notesolver\SettingsDialog.java:26
-msgid "Use your language in Note Comments"
+#: src\main\java\org\openstreetmap\josm\plugins\notesolver\SettingsDialog.java:25
+msgid "Use your language in changeset comments"
 msgstr ""
 
 #. Plugin description for notesolver

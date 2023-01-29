@@ -22,8 +22,8 @@ public class SettingsDialog {
 		final JPanel settingsPanel = new JPanel();
 		final boolean useLocalLanguageInChangeset  = Config.getPref().getBoolean("noteSolver.useLocalLanguageInChangeset", true);
 		final boolean useLocalLanguageInNote       = Config.getPref().getBoolean("noteSolver.useLocalLanguageInNote", true);
-		JCheckBox checkUseLocalLanguageInChangeset = new JCheckBox(I18n.tr("Use your language in Changeset Comments"), useLocalLanguageInChangeset);
-		JCheckBox checkUseLocalLanguageInNote      = new JCheckBox(I18n.tr("Use your language in Note Comments"), useLocalLanguageInNote);
+		JCheckBox checkUseLocalLanguageInChangeset = new JCheckBox(I18n.tr("Use your language in changeset comments"), useLocalLanguageInChangeset);
+		JCheckBox checkUseLocalLanguageInNote      = new JCheckBox(I18n.tr("Use your language in Note comments"), useLocalLanguageInNote);
 		final String overrideChangesetComment      = Config.getPref().get("noteSolver.overrideChangesetComment", "");
 		final String overrideNoteComment           = Config.getPref().get("noteSolver.overrideNoteComment", "");
 		JTextField textOverrideChangesetComment    = new JTextField(overrideChangesetComment);
@@ -36,7 +36,7 @@ public class SettingsDialog {
 		box.add(new JSeparator());
 		box.add(new JLabel(I18n.tr("Use this changeset comment rather than the default message:")));
 		box.add(textOverrideChangesetComment);
-		box.add(new JLabel(I18n.tr("Use this Note Comment rather than the default message:")));
+		box.add(new JLabel(I18n.tr("Use this Note comment rather than the default message:")));
 		box.add(textOverrideNoteComment);
 		box.add(Box.createRigidArea(new Dimension(0, 5)));
 		box.add(new JLabel(I18n.tr("Placeholders:")));
