@@ -34,16 +34,16 @@ public class SettingsDialog {
 		box.add(checkUseLocalLanguageInNote);
 		box.add(Box.createRigidArea(new Dimension(0, 5)));
 		box.add(new JSeparator());
-		box.add(new JLabel(I18n.tr("Use this Changeset Comment rather than the default message:")));
+		box.add(new JLabel(I18n.tr("Use this changeset comment rather than the default message:")));
 		box.add(textOverrideChangesetComment);
 		box.add(new JLabel(I18n.tr("Use this Note Comment rather than the default message:")));
 		box.add(textOverrideNoteComment);
 		box.add(Box.createRigidArea(new Dimension(0, 5)));
 		box.add(new JLabel(I18n.tr("Placeholders:")));
-		box.add(new JLabel(I18n.tr("##noteSolver:NID## for the Note ID in the Changeset Comment")));
-		box.add(new JLabel(I18n.tr("##noteSolver:CID## for the Changeset number in the Note Comment"))); 
-		box.add(new JLabel(I18n.tr("##noteSolver:LN## for a Link to the Note in the Changeset Comment")));
-		box.add(new JLabel(I18n.tr("##noteSolver:LC## for a Link to the Changeset in the Note Comment")));
+		box.add(new JLabel(I18n.tr("##noteSolver:NID## for the Note ID in the changeset comment")));
+		box.add(new JLabel(I18n.tr("##noteSolver:CID## for the changeset number in the Note comment"))); 
+		box.add(new JLabel(I18n.tr("##noteSolver:LN## for a Link to the Note in the changeset comment")));
+		box.add(new JLabel(I18n.tr("##noteSolver:LC## for a Link to the changeset in the Note comment")));
 		
 		settingsPanel.add(box);
 		final int result = 

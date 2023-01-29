@@ -93,7 +93,7 @@ public class NoteSolverPlugin extends Plugin {
 
 				int outVal = JOptionPane.showConfirmDialog(
 					null,
-					I18n.trn("Automatically Resolve Note\n{0}?", "Automatically Resolve Notes\n{0}?", rememberedNotes.size(), noteList),
+					I18n.trn("Automatically resolve Note\n{0}?", "Automatically resolve Notes\n{0}?", rememberedNotes.size(), noteList),
 					null, 
 					JOptionPane.YES_NO_CANCEL_OPTION, 
 					JOptionPane.QUESTION_MESSAGE
@@ -131,10 +131,16 @@ public class NoteSolverPlugin extends Plugin {
 
 	private final JosmAction settingsDialogMenu = new JosmAction() {
 		private static final long serialVersionUID = 1927873880648933878L;
-		//SettingsDialog sd = new ();
 		@Override
 		public void actionPerformed(ActionEvent event) {
 			boolean retVal = SettingsDialog.showSettingsDialog();
+		}
+	};
+	private final JosmAction aboutDialog = new JosmAction() {
+		private static final long serialVersionUID = 1927873880648933877L;
+		@Override
+		public void actionPerformed(ActionEvent event) {
+			boolean retVal = AboutDialog.showAboutDialog();
 		}
 	};
 
@@ -335,7 +341,7 @@ public class NoteSolverPlugin extends Plugin {
 
 	public void updateMenu() {
 		noteSolverMenu.removeAll();
-		noteSolverMenu.add(createMenuItem("Settings", "Plugin settings", settingsDialogMenu, true));
+		noteSolverMenu.add(createMenuItem(I18n.tr("Settings"), I18n.tr("Plugin settings"), settingsDialogMenu, true));
 		noteSolverMenu.addSeparator();
 		for (JMenuItem j : mainMenuEntries(menuTypes.MAIN)) {
 			noteSolverMenu.add(j);
@@ -346,7 +352,9 @@ public class NoteSolverPlugin extends Plugin {
 			noteSolverMenu.addSeparator();
 			for (JMenuItem j : mainMenuEntries(menuTypes.NOTELIST))
 				noteSolverMenu.add(j);
+			noteSolverMenu.addSeparator();
 		}
+		noteSolverMenu.add(createMenuItem(I18n.tr("About"), I18n.tr("About noteSolver Plugin"), aboutDialog, true));
 	}
 
 	private List<JMenuItem> mainMenuEntries(Enum<menuTypes> menuType) {
