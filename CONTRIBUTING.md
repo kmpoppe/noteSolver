@@ -7,3 +7,7 @@ As this plugin is maintained in GitHub and not in the JOSM's branch of OpenStree
 Even if you have write access to the JOSM SVN **please do not commit this repository there** - because I don't and thus can't make any corrections there! Thank you!
 
 Questions still unanswered? Please do not hesitate to contact me via osm@poppe.dev!
+
+## Translation
+
+Translation of the plugin is done using [POEditor](https://poeditor.com/join/project/RggSp7leZr), so if you're feeling like contributing a translation for the very limited amount of strings (currently only 12), you're very much welcome to add another translated language. Thank you!
