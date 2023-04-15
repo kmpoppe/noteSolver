@@ -84,9 +84,19 @@ public class NoteSolverPlugin extends Plugin {
 		@Override
 		public boolean checkUpload(APIDataSet apiDataSet) {
 			boolean returnValue = true;
+			MainApplication.getLayerManager().getEditDataSet().getChangeSetTags().remove("closed:note");
+			// check online status before asking whether to close notes
 			if (rememberedNotes != null && rememberedNotes.size() > 0) {
+				for (Note note : rememberedNotes) {
+					String cOnlineStatus = getOnlineNoteStatus(note.getId());
+					if (note.getState() == State.CLOSED || cOnlineStatus.toLowerCase().trim().equals("closed")) {
+						solvedNotes.add(note);
+					}
+				}
 				for (Note note : solvedNotes)
 					if (rememberedNotes.containsNote(note)) rememberedNotes.remove(note);
+			}
+			if (rememberedNotes != null && rememberedNotes.size() > 0) {
 
 				StringBuilder noteList = new StringBuilder();
 				rememberedNotes.forEach((n) -> noteList.append("\n" + NoteText.noteShortText(n)));
@@ -120,7 +130,13 @@ public class NoteSolverPlugin extends Plugin {
 						}
 						MainApplication.getLayerManager().getEditDataSet().addChangeSetTag("created_by", "noteSolver_plugin/" + myPluginInformation.version);
 						MainApplication.getLayerManager().getEditDataSet().addChangeSetTag("comment", comment);
-						MainApplication.getLayerManager().getEditDataSet().addChangeSetTag("closed:note", closedNoteTag);
+						if (closedNoteTag == "")
+						{
+							MainApplication.getLayerManager().getEditDataSet().getChangeSetTags().remove("closed:note");
+						} else 
+						{
+							MainApplication.getLayerManager().getEditDataSet().addChangeSetTag("closed:note", closedNoteTag);
+						}
 					}
 					returnValue = true;
 				}
