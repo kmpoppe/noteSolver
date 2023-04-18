@@ -1,12 +1,10 @@
 package org.openstreetmap.josm.plugins.notesolver;
 
-import java.text.DateFormat;
 import java.util.ArrayList;
 import java.util.List;
 
 import org.openstreetmap.josm.actions.*;
 import org.openstreetmap.josm.actions.upload.*;
-import org.openstreetmap.josm.actions.downloadtasks.*;
 
 import org.openstreetmap.josm.data.*;
 import org.openstreetmap.josm.data.notes.*;
@@ -149,14 +147,14 @@ public class NoteSolverPlugin extends Plugin {
 		private static final long serialVersionUID = 1927873880648933878L;
 		@Override
 		public void actionPerformed(ActionEvent event) {
-			boolean retVal = SettingsDialog.showSettingsDialog();
+			SettingsDialog.showSettingsDialog();
 		}
 	};
 	private final JosmAction aboutDialog = new JosmAction() {
 		private static final long serialVersionUID = 1927873880648933877L;
 		@Override
 		public void actionPerformed(ActionEvent event) {
-			boolean retVal = AboutDialog.showAboutDialog();
+			AboutDialog.showAboutDialog();
 		}
 	};
 
@@ -282,34 +280,34 @@ public class NoteSolverPlugin extends Plugin {
 		@Override
 		public void otherDatasetChange(AbstractDatasetChangedEvent event)
 		{
-			if (event.getType() == AbstractDatasetChangedEvent.DatasetEventType.CHANGESET_ID_CHANGED && autoUploadDecision) {
-				lastChangeSet = ((ChangesetIdChangedEvent) event).getNewChangesetId();
-			}
 			ProgressMonitor pm = null;
-			if (event.getType() == AbstractDatasetChangedEvent.DatasetEventType.PRIMITIVE_FLAGS_CHANGED && autoUploadDecision && requiresUploadCount == 0 && lastChangeSet > 0) {
-				for (Note note : rememberedNotes) {
-					String cOnlineStatus = getOnlineNoteStatus(note.getId());
-					NoteData noteData = new NoteData(java.util.Collections.singleton(note));
-					String noteComment = getNoteComment(lastChangeSet);
-					if (note.getState() == State.OPEN && cOnlineStatus.toLowerCase().trim().equals("open")) {
-						try {
-							noteData.closeNote(note, noteComment);
-							UploadNotesTask uploadNotesTask = new UploadNotesTask();
-							uploadNotesTask.uploadNotes(noteData, pm);
-						} catch (Exception e) {
-							JOptionPane.showMessageDialog(null, I18n.tr("Upload Note exception:\n{0}", e.getMessage()));
+			if (event.getType() == AbstractDatasetChangedEvent.DatasetEventType.CHANGESET_ID_CHANGED && autoUploadDecision) {				
+				lastChangeSet = ((ChangesetIdChangedEvent) event).getNewChangesetId();
+				if (requiresUploadCount > 0 && lastChangeSet > 0) {
+					for (Note note : rememberedNotes) {
+						String cOnlineStatus = getOnlineNoteStatus(note.getId());
+						NoteData noteData = new NoteData(java.util.Collections.singleton(note));
+						String noteComment = getNoteComment(lastChangeSet);
+						if (note.getState() == State.OPEN && cOnlineStatus.toLowerCase().trim().equals("open")) {
+							try {
+								noteData.closeNote(note, noteComment);
+								UploadNotesTask uploadNotesTask = new UploadNotesTask();
+								uploadNotesTask.uploadNotes(noteData, pm);
+							} catch (Exception e) {
+								JOptionPane.showMessageDialog(null, I18n.tr("Upload Note exception:\n{0}", e.getMessage()));
+							}
+						} else {
+							JOptionPane.showMessageDialog(null, I18n.tr("Note {0} was already closed outside of JOSM", Long.toString(note.getId())));
 						}
-					} else {
-						JOptionPane.showMessageDialog(null, I18n.tr("Note {0} was already closed outside of JOSM", Long.toString(note.getId())));
+						solvedNotes.add(note);
 					}
-					solvedNotes.add(note);
+					rememberedNotes = new NoteList();
+					event.getDataset().addChangeSetTag("comment", "");
+					event.getDataset().addChangeSetTag("closed:note", "");
+					updateMenu();
+					autoUploadDecision = false;
+					lastChangeSet = 0;
 				}
-				rememberedNotes = new NoteList();
-				event.getDataset().addChangeSetTag("comment", "");
-				event.getDataset().addChangeSetTag("closed:note", "");
-				updateMenu();
-				autoUploadDecision = false;
-				lastChangeSet = 0;
 			}
 		}
 
