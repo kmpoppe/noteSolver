@@ -405,7 +405,7 @@ public class NoteSolverPlugin extends Plugin {
 					returnList.add(
 						createMenuItem(
 							NoteText.noteShortText(note), 
-							note.getFirstComment().toString(),
+							(note.getFirstComment() != null ? note.getFirstComment().toString() : ""),
 							new ActionListener() {
 								@Override
 								public void actionPerformed(ActionEvent ev) {
